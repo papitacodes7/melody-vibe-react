@@ -2,7 +2,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const transition = {
   type: "spring" as const,
@@ -24,11 +24,20 @@ export const MenuItem = ({
   item: string;
   children?: React.ReactNode;
 }) => {
+  const navigate = useNavigate();
+  
+  const handleClick = () => {
+    if (item === "Services") {
+      navigate("/services");
+    }
+  };
+
   return (
-    <div onMouseEnter={() => setActive(item)} className="relative ">
+    <div onMouseEnter={() => setActive(item)} className="relative">
       <motion.p
         transition={{ duration: 0.3 }}
         className="cursor-pointer text-white hover:opacity-[0.9] font-josefin"
+        onClick={handleClick}
       >
         {item}
       </motion.p>

@@ -1,7 +1,7 @@
 
 "use client";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { HoveredLink, Menu, MenuItem } from "./ui/navbar-menu";
 import { cn } from "@/lib/utils";
 
@@ -16,6 +16,19 @@ export function Navigation() {
 function Navbar({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null);
   const [hoveredService, setHoveredService] = useState<string | null>(null);
+  const navigate = useNavigate();
+  
+  const handleServicesClick = () => {
+    navigate("/services");
+  };
+
+  const handleAudioClick = () => {
+    navigate("/services/audio");
+  };
+
+  const handleVideoClick = () => {
+    navigate("/services/video");
+  };
   
   return (
     <div
@@ -38,19 +51,17 @@ function Navbar({ className }: { className?: string }) {
               <div className="flex flex-col space-y-2">
                 <div 
                   className="bg-gray-800 px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors cursor-pointer"
+                  onClick={handleAudioClick}
                   onMouseEnter={() => setHoveredService('audio')}
                 >
-                  <HoveredLink to="/services/audio" className="text-white font-josefin font-semibold">
-                    Audio
-                  </HoveredLink>
+                  <span className="text-white font-josefin font-semibold">Audio</span>
                 </div>
                 <div 
                   className="bg-gray-800 px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors cursor-pointer"
+                  onClick={handleVideoClick}
                   onMouseEnter={() => setHoveredService('video')}
                 >
-                  <HoveredLink to="/services/video" className="text-white font-josefin font-semibold">
-                    Video
-                  </HoveredLink>
+                  <span className="text-white font-josefin font-semibold">Video</span>
                 </div>
               </div>
               
@@ -130,3 +141,43 @@ function Navbar({ className }: { className?: string }) {
     </div>
   );
 }
+
+// Update the MenuItem component to handle click events
+const EnhancedMenuItem = ({ 
+  setActive, 
+  active, 
+  item, 
+  children, 
+  onClick 
+}: {
+  setActive: (item: string) => void;
+  active: string | null;
+  item: string;
+  children?: React.ReactNode;
+  onClick?: () => void;
+}) => {
+  return (
+    <div 
+      onMouseEnter={() => setActive(item)} 
+      onClick={onClick}
+      className="relative cursor-pointer"
+    >
+      <span className="text-white hover:opacity-80 font-josefin transition-opacity">
+        {item}
+      </span>
+      {active !== null && (
+        <div className="transition-all duration-300 ease-in-out">
+          {active === item && (
+            <div className="absolute top-[calc(100%_+_1.2rem)] left-1/2 transform -translate-x-1/2 pt-4">
+              <div className="bg-black/90 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/[0.2] shadow-xl">
+                <div className="w-max h-full p-4">
+                  {children}
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+};

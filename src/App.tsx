@@ -10,6 +10,7 @@ import Clients from "./pages/Clients";
 import Albums from "./pages/Albums";
 import Contacts from "./pages/Contacts";
 import FAQs from "./pages/FAQs";
+import Services from "./pages/services/Services";
 import AudioServices from "./pages/services/AudioServices";
 import VideoServices from "./pages/services/VideoServices";
 import NotFound from "./pages/NotFound";
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/albums" element={<Albums />} />
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/faqs" element={<FAQs />} />
+          <Route path="/services" element={<Services />} />
           <Route path="/services/audio" element={<AudioServices />} />
           <Route path="/services/video" element={<VideoServices />} />
           <Route path="*" element={<NotFound />} />
