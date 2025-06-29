@@ -33,9 +33,65 @@ function Navbar({ className }: { className?: string }) {
             About
           </Link>
           <MenuItem setActive={setActive} active={active} item="Services">
-            <div className="flex flex-col space-y-4 text-sm">
-              <HoveredLink to="/services/audio">Audio Services</HoveredLink>
-              <HoveredLink to="/services/video">Video Services</HoveredLink>
+            <div className="flex space-x-8 p-4">
+              <div className="flex flex-col space-y-2">
+                <div className="bg-gray-800 px-4 py-2 rounded-lg">
+                  <HoveredLink to="/services/audio" className="text-white font-josefin font-semibold">
+                    Audio
+                  </HoveredLink>
+                </div>
+                <div className="bg-gray-800 px-4 py-2 rounded-lg">
+                  <HoveredLink to="/services/video" className="text-white font-josefin font-semibold">
+                    Video
+                  </HoveredLink>
+                </div>
+              </div>
+              
+              <div className="border-l border-gray-600 pl-8">
+                <div className="flex flex-col space-y-3 text-sm min-w-[200px]">
+                  <h4 className="text-white font-josefin font-semibold mb-2">Audio Services</h4>
+                  <HoveredLink to="/services/audio" className="text-gray-300 hover:text-white font-josefin">
+                    Music Label
+                  </HoveredLink>
+                  <HoveredLink to="/services/audio" className="text-gray-300 hover:text-white font-josefin">
+                    Song Distribution
+                  </HoveredLink>
+                  <HoveredLink to="/services/audio" className="text-gray-300 hover:text-white font-josefin">
+                    Music Production
+                  </HoveredLink>
+                  <HoveredLink to="/services/audio" className="text-gray-300 hover:text-white font-josefin">
+                    Recording Studio
+                  </HoveredLink>
+                  <HoveredLink to="/services/audio" className="text-gray-300 hover:text-white font-josefin">
+                    On Set Sync Sound
+                  </HoveredLink>
+                </div>
+                
+                <div className="flex flex-col space-y-3 text-sm mt-6">
+                  <h4 className="text-white font-josefin font-semibold mb-2">Video Services</h4>
+                  <HoveredLink to="/services/video" className="text-gray-300 hover:text-white font-josefin">
+                    Equipment Hiring
+                  </HoveredLink>
+                  <HoveredLink to="/services/video" className="text-gray-300 hover:text-white font-josefin">
+                    Video Shooting
+                  </HoveredLink>
+                  <HoveredLink to="/services/video" className="text-gray-300 hover:text-white font-josefin">
+                    Artist Coordination
+                  </HoveredLink>
+                  <HoveredLink to="/services/video" className="text-gray-300 hover:text-white font-josefin">
+                    Locations
+                  </HoveredLink>
+                  <HoveredLink to="/services/video" className="text-gray-300 hover:text-white font-josefin">
+                    Editing
+                  </HoveredLink>
+                  <HoveredLink to="/services/video" className="text-gray-300 hover:text-white font-josefin">
+                    Graphics
+                  </HoveredLink>
+                  <HoveredLink to="/services/video" className="text-gray-300 hover:text-white font-josefin">
+                    VFX
+                  </HoveredLink>
+                </div>
+              </div>
             </div>
           </MenuItem>
           <Link to="/clients" className="text-white hover:opacity-80 font-josefin transition-opacity">
